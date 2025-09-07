@@ -18,11 +18,10 @@ export const useFetchMyShortUrls = (token, onError) => {
             );
          },
             select: (data) => {
-                const convertToArray = Object.keys(data.data).map((key) => ({
-                    clickDate: key,
-                    count: data.data[key],
-                }));
-                return convertToArray;
+                const sortedData = data.data.sort(
+                    (a,b)=>new Date(b.createdDate)-new Date(a.createdDate)
+                );
+                return sortedData;
             },
             onError,
             staleTime: 5000
