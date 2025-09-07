@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { useStoreContext } from '../contextApi/ContextApi';
 
 
-const Login = () => {
+const LoginPage = () => {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const { setToken } = useStoreContext();
@@ -39,7 +39,7 @@ const Login = () => {
             localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token))
             toast.success("Login Successful")
             reset();
-            navigate("/");
+            navigate("/dashboard");
 
         } catch(error){
             console.log(error);
@@ -106,4 +106,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginPage
